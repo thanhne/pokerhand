@@ -10,8 +10,8 @@
 		public $counter;
 		public $ranks;
 		public $isOnePair, $isTwoPair, $isThreeCards, $isFourCards, $isFullHouse = false;
-		public $suits_allow = ["S","H","D","C"];
-		public $ranks_allow = ["2","3","4","5","6","7","8","9","10","J","Q","K","A"];
+		public $suits_allow = ["S","H","D","C","s","h","d","c"];
+		public $ranks_allow = ["2","3","4","5","6","7","8","9","10","J","Q","K","A","j","q","k","a"];
 
 		function __construct($str){
 			$this->ValidCardsFromString($str);
@@ -129,7 +129,16 @@
 		}
 	}
 
-	$arr = [
+	echo "Please inter card string (example: H2S2C2D2HJ, H2S2C3D3HQ, H3S3C3D2HA): ";
+	$handle = fopen ("php://stdin","r");
+	$cards = fgets($handle);
+	if($cards){
+	    new pokehand(trim($cards));
+	    exit;
+	}
+
+//random
+/*	$arr = [
 		"S1H1S4CJS4", //error
 		"S3H3S3CJS4", //three cards
 		"S2H2S4C4S4", //full house
@@ -142,4 +151,4 @@
 
 	$key = array_rand($arr);
 	$input = $arr[$key];
-	new pokehand($input);
+	new pokehand($input);*/
