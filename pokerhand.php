@@ -11,7 +11,7 @@
 		public $ranks;
 		public $isOnePair, $isTwoPair, $isThreeCards, $isFourCards, $isFullHouse = false;
 		public $suits_allow = ["S","H","D","C","s","h","d","c"];
-		public $ranks_allow = ["2","3","4","5","6","7","8","9","10","J","Q","K","A","j","q","k","a"];
+		public $ranks_allow = ["2","3","4","5","6","7","8","9","10","X","J","Q","K","A","j","q","k","a"];
 
 		function __construct($str){
 			$this->ValidCardsFromString($str);
@@ -53,6 +53,9 @@
 		 * @param [type] $str [input 10 chars have 5 cards example: D4C4C8D8S4]
 		 */
 		public function ValidCardsFromString($str){
+
+			$str = str_replace('10', 'X', $str); //^^ i think i'll validate that in the feature 
+
 			$cards = str_split($str,2);
 			$total_card = count($cards);
 			if($total_card != 5){
